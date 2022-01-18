@@ -20,11 +20,42 @@ app.set('view engine', 'ejs');
 app.set('views', './src/views'); // Seteo de la ubicación de la carpeta "views"
 
 
+const middleware = require('./middlewares/userLogs');
 
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
-const mainRouter = require('./routes/main');
-app.use('/', mainRouter);
+// const mainRouter = require('./routes/main');
+
+app.use(middleware) // GLOBAL
+
+app.get('/', (req,res) => {
+  res.send("hola munddo")
+});
+
+app.get('/users', (req,res) => { // DE RUTA
+  console.log("/users")
+  res.send("users")
+})
+
+app.get('/products', (req,res) => { // DE RUTA
+  console.log("/products")
+  res.send("products")
+})
+
+app.get('/admins', (req,res) => { // DE RUTA
+  console.log("/admins")
+  res.send("admins")
+})
+
+app.get('/services', (req,res) => { // DE RUTA
+  console.log("/services")
+  res.send("services")
+})
+
+app.get('/logs', (req,res) => { // DE RUTA
+  console.log("/logs")
+  res.send("logs")
+})
 
 
 
